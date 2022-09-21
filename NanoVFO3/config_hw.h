@@ -5,8 +5,8 @@
 #define HARDWARE_3_1
 
 // раскоментировать используемый дисплей (только один!). 
-#define DISPLAY_OLED_SH1106_128x64     // OLED 1.3" 128x64 (132x64)
-//#define DISPLAY_OLED128x64     // OLED 0.96" 128x64
+//#define DISPLAY_OLED_SH1106_128x64     // OLED 1.3" 128x64 (132x64)
+#define DISPLAY_OLED128x64     // OLED 0.96" 128x64
 
 // keypad pool interval in ms
 #define POOL_INTERVAL       50
@@ -50,8 +50,8 @@
 #define CAT_BAUND_RATE    9600
 
 // выбрать тип CAT протокола (только один!)
-//#define CAT_PROTOCOL_KENWOOD_TS480
-#define CAT_PROTOCOL_YAESU_FT817
+#define CAT_PROTOCOL_KENWOOD_TS480
+//#define CAT_PROTOCOL_YAESU_FT817
 
 // Pin active levels (HIGH / LOW)
 
