@@ -30,7 +30,7 @@
 #define FREQ_GRANULATION        50
 
 // раскоментировать при использовании AS5600
-//#define ENCODER_AS5600
+#define ENCODER_AS5600
 /*
 0 : 8 (61 Hz)
 1 : 16 (122 Hz)
@@ -42,12 +42,12 @@
 7: 1024 (7.8 kHz)
 8: 2048 (15.6 kHz))
 */
-//#define ENCODER_AS5601_Q 7
+//#define ENCODER_AS5601_Q 3
 // количество импульсов на оборот механического энкодера
 #define ENCODER_PULSE_PER_TURN    20
 // умножение количества импульсов за счет обработки дополнительных состояний. раскоментарьте требуемый коэффициент
 // учетверение ENCODER_MULT_4 может работать нестабильно на некоторых экземлярах валкодеров
-#define ENCODER_MULT_2
+//#define ENCODER_MULT_2
 //#define ENCODER_MULT_4
 // изменение частоты в Гц на один оборот в обычном режиме
 #define ENCODER_FREQ_LO_STEP      2000
