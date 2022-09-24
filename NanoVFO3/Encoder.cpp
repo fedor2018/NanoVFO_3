@@ -6,11 +6,10 @@
   подключение энкодера PIN 2,3
   AS5600 - I2C
 */
-
-#ifdef ENCODER_AS5600
-#include <i2c.h>
-
 #define AS5600_ADDR 0x36
+#include <i2c.h>
+#ifdef ENCODER_AS5600
+
 #define RAWANGLEAddressMSB 0x0C
 #define RAWANGLEAddressLSB 0x0D
 #define STATUSAddress 0x0B
@@ -82,6 +81,11 @@ void Encoder::Setup()
   #endif
 #endif
 
+#ifdef ENCODER_AS5601_Q
+#define ENC_MUL  1
+#define ENCODER_PULSE_PER_TURN 8<<ENCODER_AS5601_Q
+#endif
+
 #define ENC_LO_STEP           (ENCODER_FREQ_LO_STEP/ENCODER_PULSE_PER_TURN/ENC_MUL)
 #define ENC_HI_STEP           (ENCODER_FREQ_HI_STEP/ENCODER_PULSE_PER_TURN/ENC_MUL)
 
@@ -139,6 +143,12 @@ long Encoder::GetDelta()
 void Encoder::Setup() {
   pinMode(2, INPUT_PULLUP);
   pinMode(3, INPUT_PULLUP);
+#ifdef ENCODER_AS5601_Q
+  i2c_begin_write(AS5600_ADDR);
+  i2c_write(0x9);
+  i2c_write(ENCODER_AS5601_Q);
+  i2c_end();
+#endif
 }
 
 #endif
