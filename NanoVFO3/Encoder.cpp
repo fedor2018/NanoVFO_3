@@ -81,11 +81,6 @@ void Encoder::Setup()
   #endif
 #endif
 
-#ifdef ENCODER_AS5601_Q
-#define ENC_MUL  1
-#define ENCODER_PULSE_PER_TURN 8<<ENCODER_AS5601_Q
-#endif
-
 #define ENC_LO_STEP           (ENCODER_FREQ_LO_STEP/ENCODER_PULSE_PER_TURN/ENC_MUL)
 #define ENC_HI_STEP           (ENCODER_FREQ_HI_STEP/ENCODER_PULSE_PER_TURN/ENC_MUL)
 

@@ -22,6 +22,7 @@ class Display_OLED128x64 {
     void DrawFreqItems(TRX& trx, uint8_t idx, uint8_t selected);
     void DrawSMeterItems(PGM_P* text, const int* vals, uint8_t selected);
     void clear();
+    void Text(const char* txt, char line=0);
 };
 
 #endif

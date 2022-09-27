@@ -108,6 +108,20 @@ void setup()
 {
   Serial.begin(CAT_BAUND_RATE);
   i2c_init();
+  disp.setup();
+  disp.Text("i2c search:",0);
+  char i=1;
+  if(i2c_device_found(0x3c)){
+    disp.Text("OLED.....OK",i++);
+  }else{
+    Serial.println("0x3c OLED not found");
+  }
+  if(i2c_device_found(0x68))disp.Text("RTC......OK",i++);
+  if(i2c_device_found(0x36))disp.Text("Si5351...OK",i++);
+  if(i2c_device_found(0x55))disp.Text("Si570....OK",i++);
+  if(i2c_device_found(0x60))disp.Text("AS5600...OK",i++);
+  delay(2000);
+  disp.clear();
   readSettings();
   inPTT.setup();
   inSMeter.setup();
@@ -178,7 +192,6 @@ void setup()
   encoder.Setup();
   trx.StateLoad();
   trx.setCWSpeed(Settings[ID_KEY_SPEED], Settings[ID_KEY_DASH_LEN]);
-  disp.setup();
 }
 
 #include "freq_calc.h"

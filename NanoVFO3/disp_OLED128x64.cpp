@@ -385,3 +385,8 @@ void Display_OLED128x64::DrawFreqItems(TRX& trx, uint8_t idx, uint8_t selected)
   }
 }
 
+void Display_OLED128x64::Text(const char* txt, char line=0){
+  oled64.setFont(System5x7);
+  oled64.setCursor(0,line);
+  oled64.println(txt);
+}

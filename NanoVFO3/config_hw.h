@@ -5,8 +5,8 @@
 #define HARDWARE_3_1
 
 // раскоментировать используемый дисплей (только один!). 
-//#define DISPLAY_OLED_SH1106_128x64     // OLED 1.3" 128x64 (132x64)
-#define DISPLAY_OLED128x64     // OLED 0.96" 128x64
+#define DISPLAY_OLED_SH1106_128x64     // OLED 1.3" 128x64 (132x64)
+//#define DISPLAY_OLED128x64     // OLED 0.96" 128x64
 
 // keypad pool interval in ms
 #define POOL_INTERVAL       50
@@ -30,8 +30,8 @@
 #define FREQ_GRANULATION        50
 
 // раскоментировать при использовании AS5600
-#define ENCODER_AS5600
-/*
+//#define ENCODER_AS5600
+/* as5601
 0 : 8 (61 Hz)
 1 : 16 (122 Hz)
 2 : 32 (244 Hz)
@@ -42,13 +42,18 @@
 7: 1024 (7.8 kHz)
 8: 2048 (15.6 kHz))
 */
-//#define ENCODER_AS5601_Q 3
+#define ENCODER_AS5601_Q 6
+#ifdef ENCODER_AS5601_Q
+#define ENCODER_MULT_2
+#define ENCODER_PULSE_PER_TURN    8<<ENCODER_AS5601_Q
+#else
 // количество импульсов на оборот механического энкодера
-#define ENCODER_PULSE_PER_TURN    20
+#define ENCODER_PULSE_PER_TURN    8
 // умножение количества импульсов за счет обработки дополнительных состояний. раскоментарьте требуемый коэффициент
 // учетверение ENCODER_MULT_4 может работать нестабильно на некоторых экземлярах валкодеров
 //#define ENCODER_MULT_2
-//#define ENCODER_MULT_4
+#define ENCODER_MULT_4
+#endif
 // изменение частоты в Гц на один оборот в обычном режиме
 #define ENCODER_FREQ_LO_STEP      2000
 // изменение частоты в Гц на один оборот в ускоренном режиме
@@ -61,7 +66,7 @@
 #define CAT_BAUND_RATE    9600
 
 // выбрать тип CAT протокола (только один!)
-#define CAT_PROTOCOL_KENWOOD_TS480
+//#define CAT_PROTOCOL_KENWOOD_TS480
 //#define CAT_PROTOCOL_YAESU_FT817
 
 // Pin active levels (HIGH / LOW)

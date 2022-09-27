@@ -38,4 +38,3 @@ bool RTC_found()
   }
   return _RTC_found;
 }
-
