@@ -213,7 +213,9 @@ void UpdateBandCtrl()
     (trx.CW ? OUT_CW_ACTIVE_LEVEL : !OUT_CW_ACTIVE_LEVEL) +
     ((trx.AttPre == 1 && !trx.TX ? OUT_ATT_ACTIVE_LEVEL : !OUT_ATT_ACTIVE_LEVEL) << 6) +
     ((trx.AttPre == 2 && !trx.TX ? OUT_PRE_ACTIVE_LEVEL : !OUT_PRE_ACTIVE_LEVEL) << 7);
-
+#ifdef BPF_DECODE
+  data += trx.BandIndex<<1;
+#else
 #ifdef BAND_ACTIVE_LEVEL_LOW
   if (BAND_COUNT <= 5) {
     data = data +
@@ -247,7 +249,7 @@ void UpdateBandCtrl()
       (trx.BandIndex & B10000 ? B100000 : 0);
   }
 #endif
-
+#endif
   if (data != last_data) {
     sendBandData(data);
     last_data = data;
