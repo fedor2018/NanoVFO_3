@@ -1,0 +1,121 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.CompileOnBackground=0
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+Compilator.LogEncoding=0
+DefaultCP=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+[Project tree]
+Новый проект
+	+Папка
+		TRX.cpp
+		TRX.h
+		pins.cpp
+		pins.h
+		menu.h
+		NanoVFO3.ino
+		config.h
+		config_sw.h
+		config_hw.h
+		Encoder.cpp
+		disp_OLED128x64.h
+		RTC.cpp
+		RTC.h
+		Encoder.h
+		disp_OLED128x64.cpp
+		freq_calc.h
+		morse.h
+		utils.cpp
+		cat.h
+		utils.h
+[Open project files]
+0=TRX.h
+1=utils.h
+2=config_hw.h
+3=TRX.cpp
+4=cat.h
+5=utils.cpp
+6=config.h
+7=morse.h
+8=freq_calc.h
+9=disp_OLED128x64.cpp
+10=Encoder.h
+11=RTC.h
+12=RTC.cpp
+13=menu.h
+14=disp_OLED128x64.h
+15=Encoder.cpp
+16=pins.cpp
+17=pins.h
+18=config_sw.h
+19=NanoVFO3.ino
+[Selected Project Files]
+Main=
+Selected=TRX.cpp
+[TRX.h]
+TopLine=1
+Caret=1,1
+[utils.h]
+TopLine=1
+Caret=1,1
+[config_hw.h]
+TopLine=1
+Caret=1,1
+[TRX.cpp]
+TopLine=1
+Caret=1,1
+[cat.h]
+TopLine=1
+Caret=1,1
+[utils.cpp]
+TopLine=1
+Caret=1,1
+[config.h]
+TopLine=83
+Caret=25,68
+[morse.h]
+TopLine=1
+Caret=1,1
+[freq_calc.h]
+TopLine=1
+Caret=1,1
+[disp_OLED128x64.cpp]
+TopLine=1
+Caret=1,1
+[Encoder.h]
+TopLine=1
+Caret=1,1
+[RTC.h]
+TopLine=1
+Caret=1,1
+[RTC.cpp]
+TopLine=1
+Caret=1,1
+[menu.h]
+TopLine=293
+Caret=1,317
+[disp_OLED128x64.h]
+TopLine=1
+Caret=1,1
+[Encoder.cpp]
+TopLine=1
+Caret=1,1
+[pins.cpp]
+TopLine=169
+Caret=1,1
+[pins.h]
+TopLine=45
+Caret=1,1
+[config_sw.h]
+TopLine=21
+Caret=1,1
+[NanoVFO3.ino]
+TopLine=179
+Caret=1,199
