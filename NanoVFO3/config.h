@@ -4,6 +4,8 @@
 #define LSB 0
 #define USB 1
 
+#define KEY_REMAP //альтернативные функции кнопок
+
 extern const struct _Bands {
   uint8_t   mc;
   long  start, startSSB, end;

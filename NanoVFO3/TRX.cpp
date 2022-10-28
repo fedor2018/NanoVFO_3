@@ -81,17 +81,37 @@ void TRX::SetFreqBand(long freq)
   }
 }
 
+void TRX::_Band()
+{
+    Freq = BandData[BandIndex];
+    FreqMemo = 0;
+    Lock=split=0;
+    sideband = Bands[BandIndex].sideband;
+    CW = inCW();
+}
+
 void TRX::NextBand()
 {
   if (!TX) {
     BandData[BandIndex] = Freq;
     if (++BandIndex >= BAND_COUNT)
       BandIndex = 0;
-    Freq = BandData[BandIndex];
+    _Band();
+/*    Freq = BandData[BandIndex];
     FreqMemo = 0;
     Lock=split=0;
     sideband = Bands[BandIndex].sideband;
-    CW = inCW();
+    CW = inCW();*/
+  }
+}
+
+void TRX::PrevBand()
+{
+  if (!TX) {
+    BandData[BandIndex] = Freq;
+    if (--BandIndex <=0)
+      BandIndex = BAND_COUNT;
+    _Band();
   }
 }
 

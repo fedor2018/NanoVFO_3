@@ -1,6 +1,12 @@
 <h2>Nano VFO 3 - simple and powerfull digital VFO</h2>
 
 Last event:
+28.10.2022<br>
+- i2c search info
+- KEY_REMAP //альтернативные функции кнопок
+- BPF_DECODE //для ДПФ с 74HC238
+- ENCODER_AS5601_Q // эксперименты с AS5601
+
 17.09.2021<br>
 - RTC clock autodetect<br>
 - band select menu<br>

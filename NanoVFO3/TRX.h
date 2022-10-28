@@ -5,6 +5,8 @@
 #include "config.h"
 
 class TRX {
+  private:
+    void _Band();
   public:
     long BandData[BAND_COUNT]; 
     int BandIndex;
@@ -31,6 +33,7 @@ class TRX {
 	  TRX();
     void SwitchToBand(int band);
     void NextBand();
+    void PrevBand();
     void SelectBand(int band);
     void ChangeFreq(long freq_delta);
     void SaveFreqToMemo();

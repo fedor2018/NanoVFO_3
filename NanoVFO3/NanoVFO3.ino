@@ -109,17 +109,17 @@ void setup()
   Serial.begin(CAT_BAUND_RATE);
   i2c_init();
   disp.setup();
-  disp.Text("i2c search:",0);
+  disp.Text((const char*)F("i2c search:"),0);
   char i=1;
   if(i2c_device_found(0x3c)){
-    disp.Text("OLED.....OK",i++);
+    disp.Text((const char*)F("OLED.....OK"),i++);
   }else{
     Serial.println("0x3c OLED not found");
   }
-  if(i2c_device_found(0x68))disp.Text("RTC......OK",i++);
-  if(i2c_device_found(0x36))disp.Text("Si5351...OK",i++);
-  if(i2c_device_found(0x55))disp.Text("Si570....OK",i++);
-  if(i2c_device_found(0x60))disp.Text("AS5600...OK",i++);
+  if(i2c_device_found(0x68))disp.Text((const char*)F("RTC......OK"),i++);
+  if(i2c_device_found(0x36))disp.Text((const char*)F("Si5351...OK"),i++);
+  if(i2c_device_found(0x55))disp.Text((const char*)F("Si570....OK"),i++);
+  if(i2c_device_found(0x60))disp.Text((const char*)F("AS5600...OK"),i++);
   delay(2000);
   disp.clear();
   readSettings();
@@ -473,11 +473,11 @@ void loop()
     if (keyb_key != 0) power_save(0);
     switch (keyb_key)
     {
-      case 1:
+      case 1://right up
         if (keyb_long) trx.SaveFreqToMemo();
         else trx.SwitchFreqToMemo();
         break;
-      case 2:
+      case 2://right down
         if (!trx.TX) {
           if (keyb_long) {
             if (trx.CW) {
@@ -492,7 +492,17 @@ void loop()
           }
         }
         break;
-      case 3:
+      case 3://left up
+#ifdef KEY_REMAP
+        if (keyb_long) {
+          show_menu();
+          keypad.waitUnpress();
+          disp.clear();
+          power_save(0);
+        }else{
+            trx.PrevBand();
+        }
+#else
 #ifdef CW_MEMO_ENABLE
         if (trx.CW) {
           cwTXOn();
@@ -515,9 +525,16 @@ void loop()
           power_save(0);
         }
 #endif
+#endif
         break;
-      case 4:
+      case 4://left down
         if (!trx.TX) {
+#ifdef KEY_REMAP
+          if (keyb_long)
+            trx.Lock = !trx.Lock;
+          else
+            trx.NextBand();
+#else
           if (keyb_long) trx.Lock = !trx.Lock;
           else {
             if (BAND_COUNT > 2) {
@@ -527,10 +544,11 @@ void loop()
               power_save(0);
             } else if (BAND_COUNT == 2) trx.NextBand();
           }
+#endif
         }
         break;
 #ifndef ENCODER_AS5600
-      case 5:
+      case 5:// encoder key
         if (keyb_long) {
           trx.Freq = (trx.Freq/1000)*1000;
         } else {
