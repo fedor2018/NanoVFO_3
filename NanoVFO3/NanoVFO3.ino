@@ -126,6 +126,18 @@ void setup()
   inPTT.setup();
   inSMeter.setup();
   keypad.setup();
+  if(keypad.Read()==1){//right up
+     disp.Text((const char*)F("       RESET?"),4);
+     keypad.waitUnpress();
+     while(keypad.Read()==0)delay(50);
+     if(keypad.Read()==1){//right up
+          disp.clear();
+          resetSettings();
+          writeSettings();
+          delay(300);
+     }
+     keypad.waitUnpress();
+  }
   pinMode(PIN_OUT_TONE, OUTPUT);
   pinMode(PIN_OUT_TX, OUTPUT);
   digitalWrite(PIN_OUT_TX, !OUT_TX_ACTIVE_LEVEL);
@@ -500,7 +512,7 @@ void loop()
           disp.clear();
           power_save(0);
         }else{
-            trx.PrevBand();
+            trx.NextBand();
         }
 #else
 #ifdef CW_MEMO_ENABLE
@@ -533,7 +545,7 @@ void loop()
           if (keyb_long)
             trx.Lock = !trx.Lock;
           else
-            trx.NextBand();
+            trx.PrevBand();
 #else
           if (keyb_long) trx.Lock = !trx.Lock;
           else {
