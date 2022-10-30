@@ -109,17 +109,17 @@ void setup()
   Serial.begin(CAT_BAUND_RATE);
   i2c_init();
   disp.setup();
-  disp.Text((const char*)F("i2c search:"),0);
+  disp.Text(("i2c search:"),0);
   char i=1;
   if(i2c_device_found(0x3c)){
-    disp.Text((const char*)F("OLED.....OK"),i++);
+    disp.Text(("OLED.....OK"),i++);
   }else{
     Serial.println("0x3c OLED not found");
   }
-  if(i2c_device_found(0x68))disp.Text((const char*)F("RTC......OK"),i++);
-  if(i2c_device_found(0x36))disp.Text((const char*)F("Si5351...OK"),i++);
-  if(i2c_device_found(0x55))disp.Text((const char*)F("Si570....OK"),i++);
-  if(i2c_device_found(0x60))disp.Text((const char*)F("AS5600...OK"),i++);
+  if(i2c_device_found(0x68))disp.Text(("RTC......OK"),i++);
+  if(i2c_device_found(0x36))disp.Text(("Si5351...OK"),i++);
+  if(i2c_device_found(0x55))disp.Text(("Si570....OK"),i++);
+  if(i2c_device_found(0x60))disp.Text(("AS5600...OK"),i++);
   delay(2000);
   disp.clear();
   readSettings();
@@ -127,7 +127,7 @@ void setup()
   inSMeter.setup();
   keypad.setup();
   if(keypad.Read()==1){//right up
-     disp.Text((const char*)F("       RESET?"),4);
+     disp.Text(("       RESET?"),4);
      keypad.waitUnpress();
      while(keypad.Read()==0)delay(50);
      if(keypad.Read()==1){//right up
