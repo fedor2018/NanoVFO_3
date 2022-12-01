@@ -117,9 +117,9 @@ void setup()
     Serial.println("0x3c OLED not found");
   }
   if(i2c_device_found(0x68))disp.Text((const char*)F("RTC......OK"),i++);
-  if(i2c_device_found(0x36))disp.Text((const char*)F("Si5351...OK"),i++);
+  if(i2c_device_found(0x60))disp.Text((const char*)F("Si5351...OK"),i++);
   if(i2c_device_found(0x55))disp.Text((const char*)F("Si570....OK"),i++);
-  if(i2c_device_found(0x60))disp.Text((const char*)F("AS5600...OK"),i++);
+  if(i2c_device_found(0x36))disp.Text((const char*)F("AS5600...OK"),i++);
   delay(2000);
   disp.clear();
   readSettings();
