@@ -109,8 +109,8 @@ void TRX::PrevBand()
 {
   if (!TX) {
     BandData[BandIndex] = Freq;
-    if (--BandIndex <=0)
-      BandIndex = BAND_COUNT;
+    if (--BandIndex <0)
+      BandIndex = BAND_COUNT-1;
     _Band();
   }
 }
