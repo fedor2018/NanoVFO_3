@@ -98,6 +98,11 @@ void readSettings()
 #ifdef HARDWARE_3_1
 void sendBandData(byte data)
 {
+/*  Serial.print("shift: 0x");Serial.print(data,HEX);Serial.print("/");
+  for (int i = 0; i < 8; i++)  {
+    Serial.print((data & 0x80>>i) ? "1" : "0");
+  }
+  Serial.println("");*/
   digitalWrite(PIN_SR_LATCH, LOW);
   shiftOut(PIN_SR_DATA, PIN_SR_SHIFT, MSBFIRST, data); 
   digitalWrite(PIN_SR_LATCH, HIGH);
@@ -241,7 +246,7 @@ void UpdateBandCtrl()
       (trx.BandIndex == 3 ? B010000 : 0) +
       (trx.BandIndex == 4 ? B100000 : 0);
   } else {
-    data = data + trx.BandIndex<<1;
+    data = data + (trx.BandIndex<<1);
 /*      (trx.BandIndex & B00001 ? B000010 : 0) +
       (trx.BandIndex & B00010 ? B000100 : 0) +
       (trx.BandIndex & B00100 ? B001000 : 0) +
