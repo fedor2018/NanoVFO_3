@@ -30,7 +30,7 @@
 #define FREQ_GRANULATION        50
 
 // раскоментировать при использовании AS5600
-//#define ENCODER_AS5600
+#define ENCODER_AS5600
 /* as5601
 0 : 8 (61 Hz)
 1 : 16 (122 Hz)
@@ -42,7 +42,7 @@
 7: 1024 (7.8 kHz)
 8: 2048 (15.6 kHz))
 */
-#define ENCODER_AS5601_Q 6
+//#define ENCODER_AS5601_Q 6
 #ifdef ENCODER_AS5601_Q
 #define ENCODER_MULT_2
 #define ENCODER_PULSE_PER_TURN    8<<ENCODER_AS5601_Q
