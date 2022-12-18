@@ -83,7 +83,7 @@
 
 #ifdef HARDWARE_3_1
 
-#define BPF_DECODE    //для ДПФ с 74HC238
+//#define BPF_DECODE    //для ДПФ с 74HC238
 #define PIN_OUT_TX          11
 #define PIN_OUT_USR         12
 #define PIN_OUT_KEY         13

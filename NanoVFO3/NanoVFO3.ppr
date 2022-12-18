@@ -69,8 +69,8 @@ Caret=10,9
 TopLine=1
 Caret=1,1
 [config_hw.h]
-TopLine=31
-Caret=25,45
+TopLine=67
+Caret=19,87
 [TRX.cpp]
 TopLine=78
 Caret=18,84
@@ -81,7 +81,7 @@ Caret=1,1
 TopLine=33
 Caret=1,1
 [config.h]
-TopLine=7
+TopLine=9
 Caret=50,7
 [morse.h]
 TopLine=50
@@ -120,8 +120,8 @@ Caret=1,44
 TopLine=1
 Caret=1,38
 [NanoVFO3.ino]
-TopLine=123
-Caret=16,130
+TopLine=229
+Caret=3,250
 [..\SI5351_VFO_RF_GEN_OLED_SH1106_V2_JCR_PW\SI5351_VFO_RF_GEN_OLED_SH1106_V2_JCR_PW.ino]
 TopLine=167
 Caret=1,167

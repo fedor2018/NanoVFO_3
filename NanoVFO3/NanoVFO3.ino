@@ -213,9 +213,9 @@ void UpdateBandCtrl()
     (trx.CW ? OUT_CW_ACTIVE_LEVEL : !OUT_CW_ACTIVE_LEVEL) +
     ((trx.AttPre == 1 && !trx.TX ? OUT_ATT_ACTIVE_LEVEL : !OUT_ATT_ACTIVE_LEVEL) << 6) +
     ((trx.AttPre == 2 && !trx.TX ? OUT_PRE_ACTIVE_LEVEL : !OUT_PRE_ACTIVE_LEVEL) << 7);
-#ifdef BPF_DECODE
+/*#ifdef BPF_DECODE
   data += trx.BandIndex<<1;
-#else
+#else*/
 #ifdef BAND_ACTIVE_LEVEL_LOW
   if (BAND_COUNT <= 5) {
     data = data +
@@ -225,13 +225,13 @@ void UpdateBandCtrl()
       (trx.BandIndex == 3 ? 0 : B010000) +
       (trx.BandIndex == 4 ? 0 : B100000);
   } else {
-    data = data +
-      (trx.BandIndex & B00001 ? 0 : B000010) +
+    data = data + trx.BandIndex<<1;
+/*      (trx.BandIndex & B00001 ? 0 : B000010) +
       (trx.BandIndex & B00010 ? 0 : B000100) +
       (trx.BandIndex & B00100 ? 0 : B001000) +
       (trx.BandIndex & B01000 ? 0 : B010000) +
       (trx.BandIndex & B10000 ? 0 : B100000);
-  }
+*/  }
 #else
   if (BAND_COUNT <= 5) {
     data = data +
@@ -241,15 +241,15 @@ void UpdateBandCtrl()
       (trx.BandIndex == 3 ? B010000 : 0) +
       (trx.BandIndex == 4 ? B100000 : 0);
   } else {
-    data = data +
-      (trx.BandIndex & B00001 ? B000010 : 0) +
+    data = data + trx.BandIndex<<1;
+/*      (trx.BandIndex & B00001 ? B000010 : 0) +
       (trx.BandIndex & B00010 ? B000100 : 0) +
       (trx.BandIndex & B00100 ? B001000 : 0) +
       (trx.BandIndex & B01000 ? B010000 : 0) +
       (trx.BandIndex & B10000 ? B100000 : 0);
-  }
+*/  }
 #endif
-#endif
+//#endif
   if (data != last_data) {
     sendBandData(data);
     last_data = data;
