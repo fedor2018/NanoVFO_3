@@ -17,11 +17,16 @@
 #define I2C_SLA_W_ACK 0x18
 #define I2C_SLA_R_ACK 0x40
 #define I2C_DATA_ACK  0x28
+#define TIMEOUT 10
 
 uint8_t i2cStart()
 {
+	int t=TIMEOUT;
 	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
-	while (!(TWCR & (1<<TWINT))) ;
+	while (!(TWCR & (1<<TWINT))){
+		delayMicroseconds(100);
+		if((t--)==0)return 0;
+	}
 	return (TWSR & 0xF8);
 }
 
