@@ -1,11 +1,11 @@
 [Config]
 Compilator.SaveAll=0
 Compilator.Capture=0
-Compilator.HideOutput=0
+Compilator.CompileOnBackground=0
 Compilator.ProgSaveAll=0
 Compilator.ProgRunSelection=0
 Compilator.LogType=0
-DefaultCPIndex=0
+DefaultCP=0
 LogtoEnd=1
 DontOpen=0
 AbsolutePath=0
@@ -61,7 +61,7 @@ NanoVFO3
 21=..\README.md
 [Selected Project Files]
 Main=
-Selected=NanoVFO3.ino
+Selected=config_sw.h
 [TRX.h]
 TopLine=1
 Caret=10,9
@@ -69,8 +69,8 @@ Caret=10,9
 TopLine=1
 Caret=1,1
 [config_hw.h]
-TopLine=67
-Caret=19,87
+TopLine=1
+Caret=36,21
 [TRX.cpp]
 TopLine=78
 Caret=18,84
@@ -81,7 +81,7 @@ Caret=1,1
 TopLine=33
 Caret=1,1
 [config.h]
-TopLine=7
+TopLine=83
 Caret=50,7
 [morse.h]
 TopLine=50
@@ -117,10 +117,10 @@ Caret=1,26
 TopLine=26
 Caret=1,44
 [config_sw.h]
-TopLine=1
-Caret=1,38
+TopLine=15
+Caret=27,27
 [NanoVFO3.ino]
-TopLine=215
+TopLine=192
 Caret=1,204
 [..\SI5351_VFO_RF_GEN_OLED_SH1106_V2_JCR_PW\SI5351_VFO_RF_GEN_OLED_SH1106_V2_JCR_PW.ino]
 TopLine=167
