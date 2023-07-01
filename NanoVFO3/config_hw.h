@@ -18,7 +18,7 @@
 //#define VFO_SI570
 
 // выбрать в меню калибровку и прописать измеренные частоты на выходах синтезаторов
-#define SI5351_CALIBRATION       2000000
+#define SI5351_CALIBRATION       25000000
 #define SI570_CALIBRATION        56319832
 
 // уровень сигнала на выходе Si5351. 0=2mA, 1=4mA, 2=6mA, 3=8mA

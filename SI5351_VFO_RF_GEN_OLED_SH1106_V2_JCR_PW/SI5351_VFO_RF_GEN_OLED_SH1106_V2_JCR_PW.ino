@@ -13,13 +13,13 @@
 #include <si5351.h>               //Etherkit https://github.com/etherkit/Si5351Arduino
 #include <SPI.h>                  //IDE Standard
 #include <Adafruit_GFX.h>         //Adafruit GFX https://github.com/adafruit/Adafruit-GFX-Library
-//#include <Adafruit_SH1106.h>      //Adafruit_SH1106 https://www.electroniclinic.com/wp-content/uploads/2020/02/Adafruit_SH1106.zip
-#include <Adafruit_SH110X.h>      //Adafruit_SH110X
-
+#include <Adafruit_SH1106.h>      //Adafruit_SH1106 https://www.electroniclinic.com/wp-content/uploads/2020/02/Adafruit_SH1106.zip
+//#include <Adafruit_SH110X.h>      //Adafruit_SH110X
+//#include <Adafruit_SSD1306.h>
 
 //User preferences
 //------------------------------------------------------------------------------------------------------------
-#define OLED_RESET 4         //Reset required for SH1106
+#define OLED_RESET -1         //Reset required for SH1106
 #define IF         0         //Enter your IF frequency, ex: 455 = 455kHz, 10700 = 10.7MHz, 0 = to direct convert receiver or RF generator, + will add and - will subtract IF offfset.
 #define BAND_INIT  2         //Enter your initial Band (1-21) at startup, ex: 1 = Freq Generator, 2 = 800kHz (MW), 7 = 7.2MHz (40m), 11 = 14.1MHz (20m). 
 #define XT_CAL_F   125000    //Si5351 calibration factor, adjust to get exatcly 10MHz. Increasing this value will decreases the frequency and vice versa.
@@ -30,13 +30,13 @@
 #define adc        A3        //The pin used by Signal Meter A/D input.
 #define cwk        A6        //Pin for CW Keying (PULLUP input, so it is activated when conected to the GND).
 //------------------------------------------------------------------------------------------------------------
-#define WHITE SH110X_WHITE
+//#define WHITE SH110X_WHITE
 
 //Rotary r = Rotary(2, 3);
 MD_REncoder r = MD_REncoder(2, 3);
 
-//Adafruit_SH1106 display(OLED_RESET);
-Adafruit_SH1106G display = Adafruit_SH1106G(124, 64, &Wire, OLED_RESET);
+Adafruit_SH1106 display(OLED_RESET);
+//Adafruit_SH1106G display = Adafruit_SH1106G(124, 64, &Wire, OLED_RESET);
 Si5351 si5351(0x60); //Si5351 I2C Address 0x60
 
 unsigned long freq, freqold, fstep;
@@ -74,7 +74,7 @@ void set_frequency(short dir) {
 
 void setup() {
   Wire.begin();
-  display.begin(0x3C, true);//(SH1106_SWITCHCAPVCC, 0x3C);
+  display.begin(SH1106_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
   display.setTextColor(WHITE);
   display.display();

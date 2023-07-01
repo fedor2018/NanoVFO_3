@@ -30,6 +30,8 @@
 #endif
 
 #include "disp_OLED128x64.h"
+#include "SSD1306AsciiAvrI2c.h"
+extern SSD1306AsciiAvrI2c oled64;
 
 #ifdef VFO_SI5351
   Si5351 vfo5351;
@@ -112,24 +114,21 @@ void sendBandData(byte data)
 void setup()
 {
   Serial.begin(CAT_BAUND_RATE);
-  i2c_init();
+  Serial.println("start");
+  i2c_init(400000);
+    
   char i=1;
-  if(i2c_device_found(0x3c)){
-    disp.setup();
-    disp.Text((const char*)F("i2c search:"),0);
-    disp.Text((const char*)F("OLED.....OK"),i++);
-  }else{
-    Serial.println("0x3c OLED not found");
-    for(i=0;i<=127;i++){
-      if(i2c_device_found(0x68))
+   for(i=0;i<127;i++){
+      if(i2c_device_found(i))
         Serial.println(i,HEX);
     }
     Serial.println("i2c end");
-  }
-  if(i2c_device_found(0x68))disp.Text((const char*)F("RTC......OK"),i++);
-  if(i2c_device_found(0x60))disp.Text((const char*)F("Si5351...OK"),i++);
-  if(i2c_device_found(0x55))disp.Text((const char*)F("Si570....OK"),i++);
-  if(i2c_device_found(0x36))disp.Text((const char*)F("AS5600...OK"),i++);
+  disp.setup();
+  disp.Text("start");
+  if(i2c_device_found(0x68))disp.Text(("RTC......OK"),i++);
+  if(i2c_device_found(0x60))disp.Text(("Si5351...OK"),i++);
+  if(i2c_device_found(0x55))disp.Text(("Si570....OK"),i++);
+  if(i2c_device_found(0x36))disp.Text(("AS5600...OK"),i++);
   delay(2000);
   disp.clear();
   readSettings();
